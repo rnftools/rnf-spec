@@ -20,7 +20,8 @@ It can be compiled also with pdfLaTeX:
 Publication
 -----------
 
-* \K. Břinda, V. Boeva, G. Kucherov. **RNF: a general framework to evaluate NGS read mappers**. *arXiv [q-bio.GN]*, 2015.
+* \K. Břinda, V. Boeva, G. Kucherov. **RNF: a general framework to evaluate NGS read mappers**. `arXiv:1504.00556`_ [q-bio.GN], 2015.
 
 .. _`RNF.tex`: RNF.tex
+.. _`arXiv:1504.00556`: http://arxiv.org/pdf/1504.00556.pdf
 
