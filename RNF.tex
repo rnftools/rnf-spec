@@ -67,84 +67,15 @@
 \bigskip
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}[node distance=1.3cm,>=stealth',bend angle=45,auto]
-
-	\tikzstyle{label}=
-		[rectangle,thick,fill=orange!50,minimum size=4mm,text width=3cm,align=center]
-
-	\tikzstyle{file}=
-		[rectangle,thick,draw=black!75,fill=blue!20,minimum size=12mm,text width=1.8cm,
-		align=center]
-
-	\tikzstyle{program}=
-		[rectangle,thick,draw=black!75,fill=black!20,minimum size=12mm,align=center,text width=1.8cm]
-
-
-	\begin{scope}
-		\node at (4,1.5) [label] (label1)
-			{\textbf{READ\\SIMULATION}};
-
-		\node at (0,0) [file] (s1)
-			{Reference genome $1$\\ {\scriptsize [\FASTA/\ldots]}};
-
-		\node at (0,-2.0) [file] (s2)
-			{Reference genome $2$\\ {\scriptsize [\FASTA/\ldots]}};
-
-		\node at (0,-3.4) (ss)
-			{\Large\textbf{\vdots}};
-
-		\node at (0,-5.0) [file] (sn)
-			{Reference genome $n$\\ {\scriptsize [\FASTA/\ldots]}};
-
-		\node at (3,0) [program] (sim)
-			{Read \\ simulator}
-				edge [pre] (s1)
-				edge [pre] (s2)
-				edge [pre] (sn);
-
-		\node at (7,0) [file] (fq)
-			{Reads \\ {\scriptsize [{\FASTQ}]}}
-				edge [pre] node[auto,swap,text width=2cm,align=center,color=red] {\footnotesize \RNF\\ encoding} (sim);
-
-	\end{scope}
-
-	\begin{scope}[xshift=13cm]
-		\node at (0,1.5) [label] (label2)
-			{\textbf{ALIGNMENT\\EVALUATION}};
-
-		\node at (0,0) [file] (sam)
-			{Alignment \\ {\scriptsize{[\SAM]}}};
-
-		\node at (0,-3) [program] (eval)
-			{Mapper evaluation tool}
-				edge [pre] node[auto,swap,text width=2cm,align=left,color=red]
-					{\footnotesize \RNF\\decoding} (sam);
-
-		\node at (0,-5) [file] (report)
-			{Report\\ {\scriptsize [\ROC/\TXT/ \HTML/\ldots]}}
-				edge [pre] (eval);
-	\end{scope}
-
-	\draw[-to,thick,snake=snake,segment amplitude=.4mm,
-		 segment length=2mm,line after snake=1mm]
-		([xshift=15mm]fq -| fq) -- ([xshift=-15mm]sam -| sam)
-		node [above=1mm,midway,text width=3cm,text centered]
-		{read mapping};
-
-	\begin{pgfonlayer}{background}
-	\filldraw [line width=4mm,join=round,black!5]
-		(s1.north -| fq.east) rectangle (sn.south -| s1.west)
-		(sam.north	-| report.east)	rectangle (report.south	-| report.west);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\caption{
-	Evaluation of mappers of \NGS\ reads using an \RNF-compatible read simulator
-	and an \RNF-compatible alignment evaluation tool.
-	Reads are simulated from one or more genomes (some of them possibly random), mixed together.
-	After aligning them back to the reference sequence, alignments are
-	assessed by an alignment evaluation tool, which subsequently creates overall reports.
-}
+%\centering
+\includegraphics[width=\textwidth]{evaluation_rnf_cropped.pdf}
+%\caption{
+%	Evaluation of mappers of \NGS\ reads using an \RNF-compatible read simulator
+%	and an \RNF-compatible alignment evaluation tool.
+%	Reads are simulated from one or more genomes (some of them possibly random), mixed together.
+%	After aligning them back to the reference sequence, alignments are
+%	assessed by an alignment evaluation tool, which subsequently creates overall reports.
+%}
 \end{figure}
 
 
@@ -200,29 +131,8 @@
 %            0         1          2         3        
 \begin{subfigure}{1.0\linewidth}
 \centering
-\begin{verbbox}[\ ]
-Coor        12345678901234-5678901234567890123456789
-                                                    
-Source 1 - reference genome                        
-chr 1       ATGTTAGATAA-GATAGCTGTGCTAGTAGGCAGTCAGCCC
-chr 2       ttcttctggaa-gaccttctcctcctgcaaataaa     
-                                                    
-Source 2 - generator of random sequences                  
-                                                    
-READS:                                              
-r001        ATG-TAGATA ->                           
-r002/1         TTAGATAACGA ->                       
-r002/2                                  <- TCAG-CGGG
-r003/1                               tgcaaataa ->
-r003/2              gaa-gacc-t ->                    
-r004                       ATAGCT............TCAG ->
-r005                                 GTAGG ->
-             <- agacctt                           
-                        <- TCGACACG   
-r006       ATATCACATCATTAGACACTA
-\end{verbbox}
 \fbox{
-\theverbbox
+\includegraphics[width=0.6\textwidth]{rnf_example_cropped.pdf}
 }
 
 \caption{Simulated reads}
