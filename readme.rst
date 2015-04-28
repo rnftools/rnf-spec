@@ -16,7 +16,6 @@ It can be compiled also with pdfLaTeX:
 
    pdflatex RNF.tex
 
-
 Publication
 -----------
 
@@ -24,4 +23,10 @@ Publication
 
 .. _`RNF.tex`: RNF.tex
 .. _`arXiv:1504.00556`: http://arxiv.org/pdf/1504.00556.pdf
+
+
+Web of the project
+------------------
+
+All information about the project is available on http://karel-brinda.github.io/rnftools.
 
