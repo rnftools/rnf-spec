@@ -26,7 +26,8 @@
 
 \usetikzlibrary{arrows,shapes,snakes,backgrounds,petri}
 
-\title{Read Naming Format Specification (draft)}
+\title{Read Naming Format Specification}
+\date{Version 0.1.1 (7 July 2015)}
 \author{Karel Břinda \and Valentina Boeva \and Gregory Kucherov}
 
 \addtolength{\textwidth}{5.4cm}
@@ -60,7 +61,7 @@
 \begin{abstract}
 	This document provides a standard for
 	naming simulated Next-Generation Sequencing (\NGS) reads
-	in order to make read simulators and mapper evaluation tools generally inter-compatible.
+	in order to make read simulators and mapper evaluation tools inter-compatible.
 \end{abstract}
 
 
@@ -86,18 +87,19 @@
 \section{Terminologies and concepts}
 
 \begin{description}
-	\item \textbf{Read tuple} 
+	\item \textbf{Read tuple.} 
 	A tuple of sequences (possibly overlapping) obtained from a sequencing machine from a single fragment of DNA.
 
-	\item \textbf{Reads} 
+	\item \textbf{Reads.} 
 	Members of a {\em read tuple}. For example, every ``paired-end read'' is a {\em read tuple} and both of its ``ends'' are individual {\em reads} in our notation.
 
-	\item \textbf{Segments}
-	Substrings of a {\em read} which are spatially distinct in the reference. They correspond to individual lines in a \SAM\ file. Thus, each {\em read} has an
+	\item \textbf{Segments.}
+	Substrings of a {\em read} which are spatially distinct in the reference.
+	They correspond to individual lines in a \SAM\ file. Thus, each {\em read} has an
 	associated chain of {\em segments} and we associate
 	a {\em read tuple} with {\em segments} of all its {\em reads}.
 		
-	Examples:
+	\textbf{Remarks:}
 	\begin{enumerate}[-]
 		\item A ``single-end read'' consists of a single {\em read} with a single {\em segment}
 		unless it comes from a region with genomic rearrangment
@@ -105,21 +107,22 @@
 		of two {\em reads}, each with one {\em segment} (under the same condition).
 		\item A ``strobe read'' consists of several {\em reads}.
 		\item A chimeric {\em read} (i.e., read corresponding to a genomic fusion, a long deletion, or a translocation) has at least two {\em segments}.
+		\item Spliced reads are not considered to be spatially distinct.
 	\end{enumerate}
 
 %	\item \textbf{Read tuple name} 
 	
 
-	\item \textbf{Simulator of NGS reads}
+	\item \textbf{Simulator of NGS reads.}
 	A program which creates artificial simulated reads from one
 	or more (possibly random) reference genomes.
 	
 		
-	\item \textbf{Evaluation tool of NGS mappers} 
+	\item \textbf{Evaluation tool of NGS mappers.} 
 	A program which evaluates alignments of simulated \NGS\ reads with known original
 	genomic positions. It assesses if each individual read is aligned correctly. 	Finally it usually creates overall statistics.
 
-	\item \textbf{$1$-based coordinate system}
+	\item \textbf{$1$-based coordinate system.}
 	A coordinate system where the first position has number $1$
 	and intervals are closed (the same system is used by the \SAM\ format).
 \end{description}
@@ -182,7 +185,7 @@ in the final \textsc{Fastq} files.
 
 \section{Read tuple names}
 
-To every {\em read tuple}, we assign two names: {Short read name} ({SRN}) and {Long read name} ({LRN}).
+To every {\em read tuple}, two names are assigned: {Short read name} ({SRN}) and {Long read name} ({LRN}).
 
 \medskip
 
@@ -216,7 +219,7 @@ Preferred final read names are {LRNs}. If an {LRN} exceeds $255$ (maximum allowe
 \subsection{Read tuple ID}
 
 It is a positive integer, which is unique within a single file with genomic data.
-These IDs are assigned continuously from $1$. Zero is reserved for ``not available'' (such value should be used only temporarily).
+These IDs are assigned continuously from $1$. Zero is reserved for ``not available''.
 
 
 %%
@@ -456,7 +459,7 @@ using \CIGAR\  (Compact Idiosyncratic Gapped Alignment Report) strings.
 	\texttt{H} & hard clipping &
 		for cutting unaligned prefixes and suffixes \\
 	\texttt{P} & padding & unused padding in padded reference\\
-	\texttt{M} & match or mismatch	& DEPRECATED, reserved for situations when distinguishing \texttt{X} vs. \texttt{=}
+	\texttt{M} & match or mismatch	& deprecated, reserved for situations when distinguishing \texttt{X} vs. \texttt{=}
 is impossible
 	\\\hline
 \end{tabular}
@@ -470,7 +473,7 @@ is impossible
 
 \begin{framed}\small
 \begin{verbatim}
-	demonstration__004__(1,1,F,16,40)__C:[6=14N5=],[spliced_read]
+	demonstration__004__(1,1,F,16,40),(1,1,R,140,150)__C:[6=14N5=,11=],[spliced_paired_end_read]
 \end{verbatim}
 \end{framed}
 
