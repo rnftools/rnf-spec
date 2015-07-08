@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>RNF specification by karel-brinda</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">RNF specification</h1>
+        <p class="header"></p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/karel-brinda/rnf-spec/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/karel-brinda/rnf-spec/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/karel-brinda/rnf-spec">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/karel-brinda">karel-brinda</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="rnf-specification" class="anchor" href="#rnf-specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>RNF specification</h1>
+
+<p>RNF stands for Read Naming Format, a generic format for assigning read names with encoded information about original positions.</p>
+
+<p><a href="RNF.pdf"><strong>Download RNF specification</strong></a></p>
+
+<h2>
+<a id="publications" class="anchor" href="#publications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h2>
+
+<ul>
+<li>
+K. Břinda, V. Boeva, G. Kucherov. <strong><a href="http://arxiv.org/pdf/1504.00556.pdf">RNF: a general framework to evaluate NGS read mappers</a></strong>. <em>arXiv:1504.00556 [q-bio.GN]</em>, 2015.</li>
+</ul>
+
+<h2>
+<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<ul>
+<li>
+<a href="http://karel-brinda.github.io/rnftools/">RNFtools</a> - Associated software package of RNF-compatible programs (MISmash and LAVEnder).</li>
+</ul>
+
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<ul>
+<li>Karel Břinda, <a href="mailto:karel.brinda@univ-mlv.fr">karel.brinda@univ-mlv.fr</a></li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
