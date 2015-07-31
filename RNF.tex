@@ -27,7 +27,7 @@
 \usetikzlibrary{arrows,shapes,snakes,backgrounds,petri}
 
 \title{Read Naming Format Specification}
-\date{Version 0.1.1 (7 July 2015)}
+\date{Version 0.1.2 (31 July 2015)}
 \author{Karel Břinda \and Valentina Boeva \and Gregory Kucherov}
 
 \addtolength{\textwidth}{5.4cm}
@@ -95,7 +95,7 @@
 
 	\item \textbf{Segments.}
 	Substrings of a {\em read} which are spatially distinct in the reference.
-	They correspond to individual lines in a \SAM\ file. Thus, each {\em read} has an
+	They correspond to individual lines in a \SAM\ file \cite{samtools}. Thus, each {\em read} has an
 	associated chain of {\em segments} and we associate
 	a {\em read tuple} with {\em segments} of all its {\em reads}.
 		
@@ -107,7 +107,7 @@
 		of two {\em reads}, each with one {\em segment} (under the same condition).
 		\item A ``strobe read'' consists of several {\em reads}.
 		\item A chimeric {\em read} (i.e., read corresponding to a genomic fusion, a long deletion, or a translocation) has at least two {\em segments}.
-		\item Spliced reads are not considered to be spatially distinct.
+		\item RNA-seq spliced reads are not considered to be spatially distinct.
 	\end{enumerate}
 
 %	\item \textbf{Read tuple name} 
@@ -124,7 +124,7 @@
 
 	\item \textbf{$1$-based coordinate system.}
 	A coordinate system where the first position has number $1$
-	and intervals are closed (the same system is used by the \SAM\ format).
+	and intervals are closed (the same system is used by the \SAM\ format \cite{samtools}).
 \end{description}
 
 
@@ -147,15 +147,15 @@
 \begin{tabular}{c|p{12.0cm}|c}
  \textbf{r. tuple} & \textbf{LRN} & \textbf{SRN} \\\hline
  r001
- 	& \texttt{sim\_\_1\_\_(1,1,F,01,10)\_\_[single\_end]}
+ 	& \texttt{sim\_\_1\_\_(1,1,F,01,10)\_\_[single-end]}
  	& \texttt{\#1}
  \\\hline
  r002
- 	& \texttt{sim\_\_2\_\_(1,1,F,04,14),(1,1,R,31,39)\_\_[paired\_end]}
+ 	& \texttt{sim\_\_2\_\_(1,1,F,04,14),(1,1,R,31,39)\_\_[paired-end]}
  	& \texttt{\#2}
  \\\hline
  r003
- 	& \texttt{sim\_\_3\_\_(1,2,F,09,17),(1,2,F,25,33)\_\_[mate\_pair]}
+ 	& \texttt{sim\_\_3\_\_(1,2,F,09,17),(1,2,F,25,33)\_\_[mate-pair]}
  	& \texttt{\#3}
  \\\hline
  r004
@@ -167,14 +167,20 @@
  	& \texttt{\#5}
  \\\hline
  r006
- 	& \texttt{rnd\_\_6\_\_(2,0,N,00,00)\_\_[random]}
+ 	& \texttt{rnd\_\_6\_\_(2,0,N,00,00)\_\_[random-contamination]}
  	& \texttt{\#6}\\
 \end{tabular}
 \caption{Long and short read names}
 \end{subfigure}
 \caption{Example of simulated {\em read tuples} and their corresponding
-Long Read Names and Short Read Names which are used
-in the final \textsc{Fastq} files.
+\RNF\ names which can be used as read names
+in the final \textsc{Fastq} files:\newline
+- single-end read (r001);\newline
+- paired-end read (r002);\newline
+- mate-pair read (r003);\newline
+- spliced RNA-seq read (r004); \newline
+- chimeric read (r005);\newline
+- random contaminating read with unspecified coordinates (r006).
 }
 \end{figure}
 
@@ -208,7 +214,7 @@ for sorting or randomization of order of tuples),
 \medskip
 
 Preferred final read names are {LRNs}. If an {LRN} exceeds $255$ (maximum allowed read length in 
-\SAM), 
+\SAM \cite{samtools}), 
 {SRNs} are used instead and a SRN--LRN correspondence file must be created. 
 
 
@@ -473,7 +479,7 @@ is impossible
 
 \begin{framed}\small
 \begin{verbatim}
-	demonstration__004__(1,1,F,16,40),(1,1,R,140,150)__C:[6=14N5=,11=],[spliced_paired_end_read]
+	demonstration__004__(1,1,F,16,40),(1,1,R,140,150)__C:[6=14N5=,11=],[spliced-paired-end-read]
 \end{verbatim}
 \end{framed}
 
